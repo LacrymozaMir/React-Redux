@@ -17,3 +17,25 @@ export const fetchPosts = () => async (dispatch: AppDispatch) => {
         }
     }
 }
+
+export const deletePost = (id: number) => async (dispatch: AppDispatch) => {
+    try {
+        dispatch(postSlice.actions.postDeleting(id));
+
+    } catch(error) {
+        if (error instanceof Error){
+            dispatch(postSlice.actions.postsFetchingError(error.message));
+        }
+    }
+}
+
+export const editingPost = (id: number, value: string) => async (dispatch: AppDispatch) => {
+    try {
+
+
+    } catch(error) {
+        if (error instanceof Error){
+            dispatch(postSlice.actions.postsFetchingError(error.message));
+        }
+    }
+}

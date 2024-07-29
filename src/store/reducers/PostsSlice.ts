@@ -30,6 +30,9 @@ export const postSlice = createSlice({
         postsFetchingError(state, action: PayloadAction<string>){
             state.isLoading = false;
             state.error = action.payload;
+        },
+        postDeleting(state, action: PayloadAction<number>){
+            state.posts = state.posts.filter(post => post.id !== action.payload);
         }
     }
 })
