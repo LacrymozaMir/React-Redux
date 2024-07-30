@@ -1,11 +1,16 @@
 import React from 'react';
+import { AppContainer } from './styles/components';
+import GlobalStyles from './styles/global';
 
 
 const App = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <AppContainer>
+        <div>dsdas</div>
+      </AppContainer>
+      <GlobalStyles/>
+    </>
   )
 }
 

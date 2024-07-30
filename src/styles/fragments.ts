@@ -10,3 +10,8 @@ export const flexColumnCenter = css`
     ${flexColumn};
     justify-content: center;
 `
+
+export const flexRow = css`
+    display: flex;
+    flex-direction: row;
+`

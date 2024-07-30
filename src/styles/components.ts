@@ -6,8 +6,15 @@ export const AppContainer = styled.main`
     max-width: 800px;
 `
 
-export const flexContainer = styled.div`
+export const FlexContainer = styled.div`
     display: flex;
     padding: 8px;
     margin: 8px;
 `
+
+export const Section = styled.section`
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+`
+
