@@ -60,3 +60,25 @@ export const createPost = (post: IPost) => (dispatch: AppDispatch) => {
         }
     }
 }
+
+export const completeAllPost = () => (dispatch: AppDispatch) => {
+    try {
+        dispatch(postSlice.actions.postsCompletingAll());
+
+    } catch (error) {
+        if (error instanceof Error){
+            dispatch(postSlice.actions.postsFetchingError(error.message));
+        }
+    }
+}
+
+export const deleteAllCompletedPost = () => (dispatch: AppDispatch) => {
+    try {
+        dispatch(postSlice.actions.postDeletingCompletedAll());
+
+    } catch (error) {
+        if (error instanceof Error){
+            dispatch(postSlice.actions.postsFetchingError(error.message));
+        }
+    }
+}

@@ -18,9 +18,6 @@ const PostsList: React.FC = ({}) => {
         dispatch(fetchPosts());
     }, []);
 
-
-
-
   return (
     <Section>
         <List>

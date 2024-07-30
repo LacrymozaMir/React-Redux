@@ -30,10 +30,11 @@ const PostForm = () => {
 
     const createNewPost = (event: any) => {
         event.preventDefault();
-        const newPost: IPost = {id: Date.now(), title: value, completed: false}
-        dispatch(createPost(newPost));
-
-        setValue('');
+        if (value.length) {
+            const newPost: IPost = {id: Date.now(), title: value, completed: false}
+            dispatch(createPost(newPost));
+            setValue('');
+        }
     }
 
   return (

@@ -49,6 +49,16 @@ export const postSlice = createSlice({
         },
         postCreating(state, action: PayloadAction<IPost>) {
             state.posts = [...state.posts, action.payload];
+        },
+        postsCompletingAll(state) {
+            state.posts = state.posts.map(post => 
+                post.completed
+                ? post
+                : {...post, completed: true}
+            );
+        },
+        postDeletingCompletedAll(state) {
+            state.posts = state.posts.filter(post => post.completed !== true);
         }
     }
 })
