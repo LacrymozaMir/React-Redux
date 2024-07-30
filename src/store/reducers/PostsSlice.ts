@@ -46,6 +46,9 @@ export const postSlice = createSlice({
                 ? {...post, completed: !post.completed}
                 : post
             )
+        },
+        postCreating(state, action: PayloadAction<IPost>) {
+            state.posts = [...state.posts, action.payload];
         }
     }
 })

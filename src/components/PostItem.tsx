@@ -4,7 +4,7 @@ import { IPost } from '../types/posts'
 import { flexRow } from '../styles/fragments';
 import { useAppDispatch } from '../hooks/redux';
 import { postSlice } from '../store/reducers/PostsSlice';
-import { deletePost, editingPost } from '../store/reducers/PostsActionCreators';
+import { completingPost, deletePost, editingPost } from '../store/reducers/PostsActionCreators';
 
 export const Post = styled.article`
   ${flexRow}
@@ -12,6 +12,7 @@ export const Post = styled.article`
 
 const PostTitle = styled.h3`
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `
 
 const Button = styled.button`
@@ -40,20 +41,24 @@ const PostItem: React.FC<IPostItem> = ({post}) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [editValue, setEditValue] = useState<string>('');
 
-  const postDelete = () => {
+  const postDelete = (): void => {
     dispatch(deletePost(post.id));
   }
 
-  const startEditing = () => {
+  const startEditing = (): void => {
     setIsEditing(true);
     setEditValue(post.title);
   }
 
-  const endEditing = () => {
+  const endEditing = (): void => {
     setIsEditing(false);
     if(editValue){
       dispatch(editingPost(post.id, editValue));
     }
+  }
+
+  const completePost = (): void => {
+    dispatch(completingPost(post.id));
   }
 
   return (
@@ -64,7 +69,12 @@ const PostItem: React.FC<IPostItem> = ({post}) => {
             value={editValue}
             onChange={(e) => setEditValue(e.target.value)}
           />
-        : <PostTitle>{post.id}. {post.title}</PostTitle>
+        : <PostTitle 
+            onClick={completePost}
+            style={{textDecoration: post.completed ? 'line-through' : 'none'}}
+          >
+            {post.id}. {post.title}
+          </PostTitle>
       }
       <div style={{marginLeft: 'auto'}}>
         <Button onClick={postDelete}>Delete</Button>

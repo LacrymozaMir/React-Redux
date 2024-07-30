@@ -49,3 +49,14 @@ export const completingPost = (id: number) => (dispatch: AppDispatch) => {
         }
     }
 }
+
+export const createPost = (post: IPost) => (dispatch: AppDispatch) => {
+    try {
+        dispatch(postSlice.actions.postCreating(post));
+
+    } catch (error) {
+        if (error instanceof Error){
+            dispatch(postSlice.actions.postsFetchingError(error.message));
+        }
+    }
+}
