@@ -29,11 +29,22 @@ export const deletePost = (id: number) => async (dispatch: AppDispatch) => {
     }
 }
 
-export const editingPost = (id: number, value: string) => async (dispatch: AppDispatch) => {
+export const editingPost = (id: number, title: string) => async (dispatch: AppDispatch) => {
     try {
-
+        dispatch(postSlice.actions.postEditing({id, title}));
 
     } catch(error) {
+        if (error instanceof Error){
+            dispatch(postSlice.actions.postsFetchingError(error.message));
+        }
+    }
+}
+
+export const completingPost = (id: number) => (dispatch: AppDispatch) => {
+    try {
+        dispatch(postSlice.actions.postCompleting(id));
+
+    } catch (e) {
         if (error instanceof Error){
             dispatch(postSlice.actions.postsFetchingError(error.message));
         }

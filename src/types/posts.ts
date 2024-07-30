@@ -1,5 +1,10 @@
 export interface IPost {
     id: number;
     title: string;
-    body: string;
+    completed: boolean;
+}
+
+export interface IPostEdit {
+    id: number;
+    title: string
 }

@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IPost } from "../../types/posts";
-import { error } from "console";
+import { IPost, IPostEdit } from "../../types/posts";
 
 
 interface PostsState {
@@ -33,6 +32,20 @@ export const postSlice = createSlice({
         },
         postDeleting(state, action: PayloadAction<number>){
             state.posts = state.posts.filter(post => post.id !== action.payload);
+        },
+        postEditing(state, action: PayloadAction<IPostEdit>) {
+            state.posts = state.posts.map(post =>
+                post.id === action.payload.id 
+                ? {...post, title: action.payload.title}
+                : post
+            )
+        },
+        postCompleting(state, action: PayloadAction<number>){
+            state.posts = state.posts.map(post => 
+                post.id === action.payload
+                ? {...post, completed: !post.completed}
+                : post
+            )
         }
     }
 })
