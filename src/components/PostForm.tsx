@@ -4,6 +4,7 @@ import { useAppDispatch } from '../hooks/redux'
 import { flexColumn } from '../styles/fragments'
 import { IPost } from '../types/posts'
 import { createPost } from '../store/reducers/PostsActionCreators'
+import { Button } from '../styles/components'
 
 const Container = styled.section`
     margin-bottom: 16px;
@@ -16,12 +17,9 @@ const Form = styled.form`
 `
 
 const Input = styled.input`
-    
+    font-size: 24px;
 `
 
-const Button = styled.button`
-    max-width: 50px;
-`
 
 const PostForm = () => {
     const dispatch = useAppDispatch();

@@ -18,3 +18,15 @@ export const Section = styled.section`
     padding: 4px;
 `
 
+export const Button = styled.button`
+    padding: 4px 16px;
+    font-size: 18px;
+    margin: 4px;
+    background: transparent;
+    transition: 0.3s ease-out;
+
+
+    &:hover {
+        background: gray;
+    }
+`
