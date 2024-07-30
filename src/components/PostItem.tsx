@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { IPost } from '../types/posts'
 import { flexRow } from '../styles/fragments';
+import { useAppDispatch } from '../hooks/redux';
+import { postSlice } from '../store/reducers/PostsSlice';
 
 export const Post = styled.article`
     ${flexRow}
@@ -28,16 +30,22 @@ interface IPostItem {
 }
 
 const PostItem: React.FC<IPostItem> = ({post}) => {
+  const dispatch = useAppDispatch();
+
+  const deletePost = (): void => {
+    dispatch(postSlice.actions.postDeleting(post.id));
+  }
+
 
   return (
     <Post>
         <PostTitle>{post.id}. {post.title}</PostTitle>
         <div style={{marginLeft: 'auto'}}>
-          <Button>Delete</Button>
+          <Button onClick={deletePost}>Delete</Button>
           <Button>Edit</Button>
         </div>
     </Post>
   )
 }
 
-export default PostItem
+export default PostItem;
