@@ -1,4 +1,3 @@
-import { error } from "console";
 import { AppDispatch } from "../store";
 import { postSlice } from "./PostsSlice";
 import axios from "axios";
@@ -44,7 +43,7 @@ export const completingPost = (id: number) => (dispatch: AppDispatch) => {
     try {
         dispatch(postSlice.actions.postCompleting(id));
 
-    } catch (e) {
+    } catch (error) {
         if (error instanceof Error){
             dispatch(postSlice.actions.postsFetchingError(error.message));
         }
