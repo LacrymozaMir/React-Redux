@@ -1,5 +1,4 @@
 import React from 'react'
-import { IPost } from '../types/posts'
 import { Section } from '../styles/components'
 
 interface IPostsList {
